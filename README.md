@@ -24,8 +24,8 @@ The system is designed as a **RESTful API**, with a clear separation of concerns
 
 ### Requirements
 
-- Python 3.x
-- Django 4.x
+- Python
+- Django
 - PostgreSQL 12+
 - Readium Web SDK (for DRM)
 
