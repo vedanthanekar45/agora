@@ -53,7 +53,7 @@ The system is designed as a **RESTful API**, with a clear separation of concerns
 
    - Create a PostgreSQL database and configure the database settings in settings.py.
    - Run migrations to set up the database tables:
-   - ```bash
+     ```bash
      python manage.py migrate
 
 5. **Create a superuser to access the admin panel:**
