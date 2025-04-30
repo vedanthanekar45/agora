@@ -38,3 +38,26 @@ def add_book (request):
     return JsonResponse({
         'message': 'Record created successfully!'
     }, bookData, status=200)
+
+
+
+# API View to add a Patron record.
+@api_view(['POST'])
+def add_patron (request):
+    data = request.data
+
+    patronData = PatronsModel.objects.get_or_create(
+        full_name = data['full_name'],
+        email = data['email'],
+        book_lent = data['books_lent'],
+        contact_number = data['contact']
+    )
+
+    if not patronData:
+        return JsonResponse({
+            'message': 'There has been an error creating that record!'
+        }, status=400)
+    
+    return JsonResponse({
+        'message': 'Record created successfully!'
+    }, patronData, status=200)
