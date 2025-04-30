@@ -3,3 +3,5 @@ env/
 
 db.sqlite3
 liblend/__pycache__/
+lending/__pycache__/
+lending/migrations/
