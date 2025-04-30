@@ -2,6 +2,11 @@ env/
 .env
 
 db.sqlite3
+
 liblend/__pycache__/
+
 lending/__pycache__/
 lending/migrations/
+
+library/__pycache__/
+library/migrations/
