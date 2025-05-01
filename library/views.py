@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 # import requests
 
 # This app will usually consist functionalities that small libraries that don't have a digital Library
-# Management sytem will work on.
+# Management system will work on.
 # Libraries with a working Library Management System won't have to enter their data manually into this 
 # lending system, and instead will be able to import directly through their LMS like Koha, FOLIO, etc.
 # Though I am originally planning to help them import through an Excel file or a CSV file.
@@ -61,3 +61,8 @@ def add_patron (request):
     return JsonResponse({
         'message': 'Record created successfully!'
     }, patronData, status=200)
+
+
+# Book lent is a Many To Many Field, and so is Authors.
+# I am not entirely sure how to test it out and exactly how will the users use it.
+
