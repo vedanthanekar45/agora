@@ -10,7 +10,6 @@ class Author(models.Model):
         return self.name
 
 
-
 # The books model is created to have a record of the books the library has. IF the library already uses LMS
 # like Koha or FOLIO, their data may be referenced through an API. Smaller libraries with no LMS may use 
 # this model.

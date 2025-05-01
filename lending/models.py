@@ -9,7 +9,11 @@ class Loans (models.Model):
 
     # Default loan period can be set by the user while setting up the lending infrastructure.
     loan_period_in_days = models.IntegerField(default=7)
-    issue_date = models.DateTimeField(auto_now_add=True)
+    issue_date = models.DateTimeField()
     return_date = models.DateTimeField()
     copies_available_after_loan = models.IntegerField()
     readium_link = models.URLField()
+    status = models.CharField(choices= [
+        ("issued", "Issued"),
+        ("returned", "Returned")
+    ], default="issued")
