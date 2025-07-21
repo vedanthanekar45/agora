@@ -1,6 +1,6 @@
 # Agora
 
-Agora will be an open-source, scalable and flexible digital lending system that'll work on top of already available digtial asset accessing platforms. The project is specifically designed to enabl libraries around the world to a "Controlled Digital Lending" of the books they already own.
+Agora is be an open-source, scalable and flexible digital lending system. The project is specifically designed to enable libraries around the world to a "Controlled Digital Lending" of the books they already own.
 
 # Project Overview
 
