@@ -1,6 +1,6 @@
-# LibLend
+# Agora
 
-Liblend will be an open-source, scalable and flexible digital lending system that'll work on top of already available digtial asset accessing platforms. The project is specifically designed to enabl libraries around the world to a "Controlled Digital Lending" of the books they already own.
+Agora will be an open-source, scalable and flexible digital lending system that'll work on top of already available digtial asset accessing platforms. The project is specifically designed to enabl libraries around the world to a "Controlled Digital Lending" of the books they already own.
 
 # Project Overview
 
@@ -34,8 +34,8 @@ The system is designed as a **RESTful API**, with a clear separation of concerns
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/vedanthanekar45/liblend.git
-   cd liblend
+   git clone https://github.com/vedanthanekar45/agora.git
+   cd agora
 
 2. **Set up a virtual environment:**
 
