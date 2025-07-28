@@ -1,29 +1,5 @@
-# Django and related packages
-Django>=4.0,<5.0
-djangorestframework>=3.12,<4.0
-
-# PostgreSQL adapter for Django
-psycopg2>=2.9,<3.0
-
-# For sending email (optional, for notification purposes)
-django-anymail>=9.0,<10.0
-# You can configure email providers such as Mailgun, Sendgrid, etc.
-
-# For date/time handling and management
-python-dateutil>=2.8,<3.0
-
-# For environment variable management
-python-dotenv>=0.19.2,<1.0
-
-# For testing (optional, but recommended for development)
-pytest>=6.2,<7.0
-pytest-django>=4.4,<5.0
-
-# For security (optional, for HTTPS support and more)
-django-sslserver>=0.22,<1.0
-
-# For managing static files (optional)
-whitenoise>=5.3,<6.0
-
-# For managing CORS (if needed for frontend/backend interaction)
-django-cors-headers>=3.7,<4.0
+asgiref==3.9.1
+Django==5.2.4
+djangorestframework==3.16.0
+psycopg2-binary==2.9.10
+sqlparse==0.5.3
