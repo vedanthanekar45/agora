@@ -40,3 +40,19 @@ class PatronsModel (models.Model):
     email = models.EmailField()
     books_lent = models.ManyToManyField(BooksModel)
     contact_number = models.BigIntegerField()
+
+
+# Model for waitlist just in case the requested book doesn't exist
+
+class WaitlistModel (models.Model):
+    patron = models.ForeignKey(PatronsModel, on_delete=models.CASCADE)
+    requested_book = models.ForeignKey(BooksModel, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('requested_book', 'patron')
+        ordering = ['date_added']
+
+    def __str__(self):
+        return f"{self.patron.username} is waiting for {self.book.title}"
+

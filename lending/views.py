@@ -1,9 +1,14 @@
 from django.http import JsonResponse
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth import get_user_model
+from django.contrib import messages
+
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
+
 from .models import *
 from library.models import *
-from django.contrib.auth import get_user_model
+
 from datetime import timedelta, datetime   # <--- To handle dates and stuff
 
 patron = get_user_model()
@@ -11,7 +16,6 @@ patron = get_user_model()
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-
 def make_loan (request):
 
     data = request.data
@@ -70,3 +74,27 @@ def close_loan (request):
     return JsonResponse({
         'message': "Asset successfully returned."
     })
+
+
+# A waitlist will be created if the requested book is not available for the user
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def join_waitlist(request, book_id):
+    book = get_object_or_404(BooksModel, id=book_id)
+    patron = request.user
+
+    has_loan = Loans.objects.filter(patron=patron, book=book, status='issued')
+    if has_loan:
+        messages.error(request, "You already have this book on loan.")
+        return redirect('book_detail', pk=book_id)
+    
+    is_on_waitlist = WaitlistModel.objects.filter(patron=patron, book=book).exists()
+    if is_on_waitlist:
+        messages.warning(request, "You are already on the waitlist for this book.")
+        return redirect('book_detail', pk=book_id)
+
+    WaitlistModel.objects.create(book=book, patron=patron)
+    messages.success(request, f"You have been added to the waitlist for '{book.title}'.")
+    
+    return redirect('book_detail', pk=book_id)
