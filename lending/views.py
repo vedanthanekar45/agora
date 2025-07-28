@@ -70,25 +70,3 @@ def close_loan (request):
     return JsonResponse({
         'message': "Asset successfully returned."
     })
-
-
-
-# View to auto-return asset
-def auto_close_loan (request):
-    data = request.data
-
-    loan_id = data.get('id')
-    try:
-        loan_data = Loans.objects.get(id=loan_id)
-        if loan_data.return_date < datetime.now():
-            loan_data.status = "returned"
-            loan_data.save()
-
-    except Loans.DoesNotExist:
-        return JsonResponse({
-            'message': "The body you're requesting for unfortunately doesn't exist."
-        }, status=400)
-    
-    return JsonResponse({
-        'message': "Asset successfully auto-returned."
-    })
