@@ -15,7 +15,6 @@ patron = get_user_model()
 # This app will contain the core functionality, that are the lending mechanisms
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
 def make_loan (request):
 
     data = request.data
@@ -57,7 +56,7 @@ def make_loan (request):
 # View or method to return the borrowed asset
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def close_loan (request):
     data = request.data
 
@@ -80,7 +79,7 @@ def close_loan (request):
 # A waitlist will be created if the requested book is not available for the user
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def join_waitlist(request, book_id):
     book = get_object_or_404(BooksModel, id=book_id)
     patron = request.user
