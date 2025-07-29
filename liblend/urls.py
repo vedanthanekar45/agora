@@ -17,6 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from library.views import *
+from lending.views import *
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Library app views
+    path('add_patron/', add_patron, name="add_patron"),
+    path('add_book/', add_book, name="add_book"),
+
+    # Lending app views
+    path('make_loan/', make_loan, name="make_loan"),
+    path('close_loan/', close_loan, name="close_loan"),
+    path('join_waitlist/', join_waitlist),
 ]

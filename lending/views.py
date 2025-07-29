@@ -29,12 +29,10 @@ def make_loan (request):
     if book.no_of_copies == 0:
         return JsonResponse({'error': 'No copies available'}, status=400)
 
-    existing_loan = Loans.objects.filter(book=book, patron=request.user)
-    if existing_loan.status == "issued":
+    if Loans.objects.filter(book=book, patron=request.user, status="issued").exists():
         return JsonResponse({'message': 'Loan already exists'}, status=400)
 
-
-    loan_data = Loans.objects.get_or_create(
+    loan_data, created = Loans.objects.get_or_create(
         book = book,
         patron = request.user,
         loan_period_in_days = data['loan_period_in_days'],
@@ -43,10 +41,13 @@ def make_loan (request):
         copies_available_after_loan = book.no_of_copies - 1,
     )
 
-    if not loan_data:
+    if not created:
         return JsonResponse({
             "message": "Loan already created!"
         }, status=400)
+    
+    book.no_of_copies -= 1
+    book.save()
 
     return JsonResponse({
         'message': 'Loan made successfully'
