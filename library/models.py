@@ -23,8 +23,6 @@ class BooksModel (models.Model):
     status = models.CharField(choices = [
         ("available", "Available"),
         ("checked_out", "Checked Out"),
-        ("missing", "Missing"),
-        ("damaged", "Damaged")
     ])
     additional_tags = models.CharField(default="N/A")
 

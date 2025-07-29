@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'liblend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB'),
+        'NAME': 'liblend_database',
         'USER': 'postgres',
         'PASSWORD': 'root',
         'HOST': 'localhost', 
