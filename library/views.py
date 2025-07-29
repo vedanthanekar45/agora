@@ -1,9 +1,10 @@
 from django.http import JsonResponse
 from .models import *
 from rest_framework.decorators import api_view
-# from dotenv import load_dotenv
-# from os import getenv
-# import requests
+from dotenv import load_dotenv
+from os import getenv
+import requests
+
 
 # This app will usually consist functionalities that small libraries that don't have a digital Library
 # Management system will work on.

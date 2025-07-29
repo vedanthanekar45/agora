@@ -3,11 +3,10 @@ from .models import *
 
 
 # Test for the books and authors model
-class BookModelTest (TestCase):
+class TestLibrary (TestCase):
 
-    def test_book_creation (self):
+    def test_patron_creation (self):
         author = Author.objects.create(name="George R. R. Martin")
-
         book = BooksModel.objects.create(
             title="Fire and Blood",
             ISBN=9781524796280,
@@ -16,6 +15,10 @@ class BookModelTest (TestCase):
             status="available"
         )
         book.authors.add(author)
-
-        # saved_book = BooksModel.objects.get(id=book.id)
-        # self.assertEqual(saved_book.title, 'Fire and Blood')
+        
+        patron = PatronsModel.objects.create(
+            full_name="Cassian Andor",
+            email="cassianandor@gmail.com",
+            contact_number= 403244993
+        )
+        patron.books_lent.add(book)
